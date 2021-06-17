@@ -7,6 +7,8 @@ module HexletCode
   class Error < StandardError; end
 
   def self.form_for(entity, &block)
+    return unless block
+
     @entity = entity.to_h
     @form = '<form action="#" method="post">'
     yield self if block
