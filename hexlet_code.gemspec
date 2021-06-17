@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'simple form_builder'
   spec.homepage      = 'https://github.com/bukharovev/rails-project-lvl1'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '2.5.0'
+  spec.required_ruby_version = '>= 2.5.0'
 
   spec.metadata['allowed_push_host'] = 'http://mygemserver.com'
 
