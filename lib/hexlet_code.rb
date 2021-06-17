@@ -35,7 +35,7 @@ module HexletCode
     @form = %(#{@form}\n  #{tag})
   end
 
-  def self.submit(button_name: 'Save')
+  def self.submit(button_name = 'Save')
     tag = Tag.build('input', type: 'submit', value: button_name, name: 'commit')
     @form = %(#{@form}\n  #{tag})
   end
