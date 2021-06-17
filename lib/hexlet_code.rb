@@ -23,7 +23,7 @@ module HexletCode
   def self.input(field, *attributes)
     return unless @entity.key? field
 
-    attributes_hash = attributes.first
+    attributes_hash = attributes.first || {}
     add_label field
     value = @entity[field]
     tag = if attributes_hash.fetch(:as, nil)
