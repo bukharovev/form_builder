@@ -2,8 +2,13 @@
 
 require_relative 'hexlet_code/version'
 
+# module
 module HexletCode
   class Error < StandardError; end
+
+  def self.form_for(entity, &block)
+    %(<form action="#" method="post">\n</form>)
+  end
 
   # tag module
   module Tag
@@ -17,12 +22,12 @@ module HexletCode
           %(#{res} #{key}="#{value}")
         end
 
-        result = "<#{tag_name}#{attributes}>"
+        result = %(<#{tag_name}#{attributes}>)
       else
         result = "<#{tag_name}>"
       end
 
-      result = "#{result}#{tag_body}</#{tag_name}>" if tag_body
+      result = %(#{result}#{tag_body}</#{tag_name}>) if tag_body
 
       result
     end
