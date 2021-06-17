@@ -6,11 +6,11 @@ require_relative 'hexlet_code/version'
 module HexletCode
   class Error < StandardError; end
 
-  def self.form_for(entity, &block)
+  def self.form_for(entity, url: '#', &block)
     return unless block
 
     @entity = entity.to_h
-    @form = '<form action="#" method="post">'
+    @form = %(<form action="#{url}" method="post">)
     yield self if block
     %(#{@form}\n</form>)
   end
