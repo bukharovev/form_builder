@@ -21,7 +21,7 @@ module HexletCode
   end
 
   def self.input(field, *attributes)
-    return unless @entity[field]
+    return unless @entity.key? field
 
     attributes_hash = attributes.first || {}
     add_label field
