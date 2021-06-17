@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "hexlet_code/version"
+require_relative 'hexlet_code/version'
 
 module HexletCode
   class Error < StandardError; end
 
+  # tag module
   module Tag
     def self.build(tag_name, *attributes_row, &block)
       tag_body = yield if block
@@ -13,7 +14,7 @@ module HexletCode
       result = ''
       if attributes_hash
         attributes = attributes_hash.reduce('') do |res, (key, value)|
-          %Q[#{res} #{key}="#{value}"]
+          %(#{res} #{key}="#{value}")
         end
 
         result = "<#{tag_name}#{attributes}>"
