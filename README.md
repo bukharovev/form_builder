@@ -21,7 +21,7 @@ Example:
 User = Struct.new(:name, :second_name, :job, keyword_init: true)
 user = User.new name: 'rob', job: 'google'
 
-HexletCode.form_for user, url: '/users' do |f|
+FormBuilder.form_for user, url: '/users' do |f|
   f.input :name, class: 'some-class'
   f.input :second_name
   f.input :job, as: :text, cols: 30, rows: 5
