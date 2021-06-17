@@ -20,21 +20,20 @@ module HexletCode
     @form = %(#{@form}\n  #{label})
   end
 
-  # rubocop:disable Naming/MethodParameterName
-  def self.input(field, as: nil)
+  def self.input(field, *attributes)
     return unless @entity.key? field
 
+    attributes_hash = attributes.first
     add_label field
     value = @entity[field]
-    tag = if as == :text
-            Tag.build('textarea', cols: '20', rows: '40', name: field) { value }
+    tag = if attributes_hash.fetch(:as, nil)
+            Tag.build('textarea', cols: '20', rows: '40', name: field, **attributes_hash) { value }
           else
-            Tag.build('input', type: 'text', name: field, value: value)
+            Tag.build('input', type: 'text', name: field, value: value, **attributes_hash)
           end
 
     @form = %(#{@form}\n  #{tag})
   end
-  # rubocop:enable Naming/MethodParameterName
 
   def self.submit(button_name: 'Save')
     tag = Tag.build('input', type: 'submit', value: button_name, name: 'commit')
