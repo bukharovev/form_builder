@@ -16,23 +16,27 @@ Or install it yourself as:
 
 ## Usage
 
+Example:
 ```ruby
-User = Struct.new(:name, :job, keyword_init: true)
-user = User.new job: 'hexlet'
+User = Struct.new(:name, :second_name, :job, keyword_init: true)
+user = User.new name: 'rob', job: 'google'
 
-HexletCode.form_for user do |f|
-  f.input :name
-  f.input :job
-  f.submit
+FormBuilder.form_for user, url: '/users' do |f|
+  f.input :name, class: 'some-class'
+  f.input :second_name
+  f.input :job, as: :text, cols: 30, rows: 5
+  f.submit 'Send'
 end
-
-# <form action="#" method="post">
-#   <label for="name">Name</label>
-#   <input type="text" name="name">
-#   <label for="job">Job</label>
-#   <input type="text" name="job" value="hexlet">
-#   <input type="submit" value="Save" name="commit">
-# </form>
+```
+Will return:
+```html
+<form action="/users" method="post">
+  <label for="name">Name</label>
+  <input type="text" name="name" value="rob" class="some-class">
+  <label for="job">Job</label>
+  <textarea cols="30" rows="5" name="job" as="text">google</textarea>
+  <input type="submit" value="Send" name="commit">
+</form>
 ```
 
 ## License
