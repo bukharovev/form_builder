@@ -56,7 +56,7 @@ module HexletCode
                  attributes = build_attributes attributes_hash
                  %(<#{tag_name}#{attributes}>)
                else
-                 "<#{tag_name}>"
+                 %(<#{tag_name}>)
                end
 
       result = %(#{result}#{tag_body}</#{tag_name}>) if tag_body
