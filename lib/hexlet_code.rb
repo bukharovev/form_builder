@@ -13,26 +13,38 @@ module HexletCode
     %(#{@form}\n</form>)
   end
 
+  def self.add_label(value)
+    label = Tag.build('label', for: value) { value.capitalize }
+    @form = %(#{@form}\n  #{label})
+  end
+
   # rubocop:disable Naming/MethodParameterName
   def self.input(field, as: nil)
     return unless @entity.key? field
 
+    add_label field
     value = @entity[field]
     tag = if as == :text
             Tag.build('textarea', cols: '20', rows: '40', name: field) { value }
           else
-            Tag.build('input', type: 'text', value: value, name: field)
+            Tag.build('input', type: 'text', name: field, value: value)
           end
 
-    @form = %(#{@form}\n\t#{tag})
+    @form = %(#{@form}\n  #{tag})
   end
   # rubocop:enable Naming/MethodParameterName
+
+  def self.submit(button_name: 'Save')
+    tag = Tag.build('input', type: 'submit', value: button_name, name: 'commit')
+    @form = %(#{@form}\n  #{tag})
+  end
 
   # tag module
   module Tag
     def self.build_attributes(attributes)
       attributes.reduce('') do |res, (key, value)|
-        %(#{res} #{key}="#{value}")
+        res = %(#{res} #{key}="#{value}") if value
+        res
       end
     end
 
