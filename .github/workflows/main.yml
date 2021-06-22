@@ -20,5 +20,5 @@ jobs:
     - name: Run Rubocop
       run: make lint
 
-    # - name: Run tests 
-    #   run: make test
+    - name: Run tests 
+      run: make test
