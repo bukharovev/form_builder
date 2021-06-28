@@ -7,3 +7,6 @@ test:
 
 lint:
 	rubocop .
+
+autofix:
+	rubocop -A
