@@ -22,6 +22,7 @@ module HexletCode
 
       value = @entity[field]
       as = attributes.fetch(:as, nil)
+
       tag = case as
             when :text
               build_textarea(field, attributes, value)
