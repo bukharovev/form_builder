@@ -5,3 +5,8 @@ require 'hexlet_code'
 
 require 'minitest/autorun'
 require 'rails-dom-testing'
+
+def load_fixture(file_name)
+  path_to_fixture = File.join(File.dirname(__FILE__), 'fixtures', file_name)
+  File.read(path_to_fixture)
+end
