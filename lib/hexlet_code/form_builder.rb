@@ -12,11 +12,10 @@ module HexletCode
       }.freeze
 
       def build(form)
-        inputs, form_attributes = *form
         form.options[:action] = form.options.delete :url
-        updated_form_attributes = DEFAULT_FORM_ATTRIBUTES.merge(form_attributes)
+        updated_form_attributes = DEFAULT_FORM_ATTRIBUTES.merge(form.options)
 
-        builded_tags = inputs.map do |input|
+        builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
           tag = Tags.get_by_type(type)
           tag.build(**attributes)
