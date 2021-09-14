@@ -2,11 +2,11 @@
 
 module HexletCode
   class Form
-    attr_reader :inputs, :options
+    attr_reader :inputs, :attributes
 
-    def initialize(entity, options)
+    def initialize(entity, attributes)
       @entity = entity
-      @options = options
+      @attributes = attributes
       @inputs = []
     end
 

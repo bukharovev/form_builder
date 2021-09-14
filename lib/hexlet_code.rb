@@ -5,10 +5,10 @@ module HexletCode
   autoload :Form, 'hexlet_code/form'
   autoload :FormBuilder, 'hexlet_code/form_builder'
 
-  def self.form_for(model, options, &block)
+  def self.form_for(model, form_attributes, &block)
     return unless block
 
-    form = Form.new(model, options)
+    form = Form.new(model, form_attributes)
     yield form
 
     FormBuilder.build form
