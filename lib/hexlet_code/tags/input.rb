@@ -7,11 +7,11 @@ module HexletCode
         type: 'text'
       }.freeze
 
-      def self.build(attributes)
+      def self.build(options: {}, **attributes)
         result = []
-        result << Label.build(attributes)
-        result << Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes))
-        result.join("\n  ")
+        result << Label.build(options: options, **attributes)
+        result << Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes), options: options)
+        result.join("\n")
       end
     end
   end

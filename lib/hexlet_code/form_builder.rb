@@ -17,11 +17,13 @@ module HexletCode
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
           tag = Tags.get_by_type(type)
-          tag.build(**attributes.except(:as))
+          tag.build(**attributes.except(:as), options: { depth: 1 })
         end
 
-        form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}" }}\n"
-        Tag.build('form', attributes: DEFAULT_FORM_ATTRIBUTES.merge(form.attributes)) { form_body_str }
+        options = { depth: 0, with_nested_body: true }
+        Tag.build('form', attributes: DEFAULT_FORM_ATTRIBUTES.merge(form.attributes), options: options) do
+          builded_tags.join("\n")
+        end
       end
     end
   end

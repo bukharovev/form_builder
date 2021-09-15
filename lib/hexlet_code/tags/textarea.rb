@@ -8,11 +8,11 @@ module HexletCode
         rows: '40'
       }.freeze
 
-      def self.build(value: '', **attributes)
+      def self.build(value: '', options: {}, **attributes)
         result = []
-        result << Label.build(attributes)
-        result << Tag.build('textarea', attributes: DEFAULT_ATTRIBUTES.merge(attributes)) { value }
-        result.join("\n  ")
+        result << Label.build(options: options, **attributes)
+        result << Tag.build('textarea', attributes: DEFAULT_ATTRIBUTES.merge(attributes), options: options) { value }
+        result.join("\n")
       end
     end
   end

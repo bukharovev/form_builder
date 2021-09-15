@@ -9,8 +9,8 @@ module HexletCode
         name: 'commit'
       }.freeze
 
-      def self.build(attributes)
-        Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes))
+      def self.build(options: {}, **attributes)
+        Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes), options: options)
       end
     end
   end
