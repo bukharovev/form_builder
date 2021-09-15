@@ -10,11 +10,11 @@ module HexletCode
         rows: '40'
       }.freeze
       class << self
-        def build(value: '', **options)
-          updated_options = DEFAULT_ATTRIBUTES.merge(options)
+        def build(value: '', **attributes)
+          updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
           result = []
-          result << Tag.build('label', for: options[:name]) { options[:name].capitalize }
-          result << Tag.build('textarea', **updated_options) { value }
+          result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
+          result << Tag.build('textarea', **updated_attributes) { value }
           result.join("\n  ")
         end
       end
