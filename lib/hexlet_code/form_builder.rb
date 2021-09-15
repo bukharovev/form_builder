@@ -12,7 +12,7 @@ module HexletCode
       }.freeze
 
       def build(form)
-        form.attributes[:action] = form.attributes.delete :url
+        form.attributes[:action] = form.attributes.delete :url # replace :url key to :action
 
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
