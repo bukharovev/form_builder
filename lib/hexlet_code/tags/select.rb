@@ -8,9 +8,7 @@ module HexletCode
           space = ' '
           select_body = build_select_options(attributes[:collection])
           select_body_str = "#{select_body.reduce('') { |acc, tag| "#{acc}\n#{space * 4}#{tag}" }}\n#{space * 2}"
-          result = []
-          result << Tag.build('select', attributes: attributes.except(:collection)) { select_body_str }
-          result.join("\n#{space * 2}")
+          Tag.build('select', attributes: attributes.except(:collection)) { select_body_str }
         end
 
         private
