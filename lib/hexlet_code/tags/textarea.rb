@@ -14,7 +14,7 @@ module HexletCode
           updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
           result = []
           result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
-          result << Tag.build('textarea', **updated_attributes) { value }
+          result << Tag.build('textarea', updated_attributes) { value }
           result.join("\n  ")
         end
       end
