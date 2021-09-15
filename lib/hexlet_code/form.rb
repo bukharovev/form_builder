@@ -18,10 +18,10 @@ module HexletCode
       }
     end
 
-    def submit(button_name = 'Save', **options)
+    def submit(button_name = 'Save', **attributes)
       @inputs << {
         type: :submit,
-        attributes: { value: button_name, **options }
+        attributes: { value: button_name, **attributes }
       }
     end
   end
