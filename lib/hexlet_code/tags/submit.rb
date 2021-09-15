@@ -10,11 +10,10 @@ module HexletCode
         value: 'Save',
         name: 'commit'
       }.freeze
-      class << self
-        def build(options)
-          merged_options = DEFAULT_ATTRIBUTES.merge(options)
-          Tag.build('input', merged_options)
-        end
+
+      def self.build(options)
+        merged_options = DEFAULT_ATTRIBUTES.merge(options)
+        Tag.build('input', merged_options)
       end
     end
   end
