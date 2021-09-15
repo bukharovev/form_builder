@@ -20,7 +20,7 @@ module HexletCode
           Tags.get_by_type(type).build(**attributes.except(:as))
         end
 
-        form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}" }}\n"
+        form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}"}}\n"
         Tags::Tag.build('form', updated_form_attributes) { form_body_str }
       end
     end
