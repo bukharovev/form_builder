@@ -6,6 +6,7 @@ module HexletCode
     autoload :Submit, 'hexlet_code/tags/submit'
     autoload :Textarea, 'hexlet_code/tags/textarea'
     autoload :Select, 'hexlet_code/tags/select'
+    autoload :Label, 'hexlet_code/tags/label'
 
     class << self
       TAG_TYPES = {

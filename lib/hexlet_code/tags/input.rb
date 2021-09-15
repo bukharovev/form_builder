@@ -2,8 +2,6 @@
 
 module HexletCode
   module Tags
-    autoload :Label, 'hexlet_code/tags/label'
-
     class Input
       def self.build(attributes)
         result = []
