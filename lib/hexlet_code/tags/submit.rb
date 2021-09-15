@@ -11,9 +11,9 @@ module HexletCode
         name: 'commit'
       }.freeze
 
-      def self.build(options)
-        merged_options = DEFAULT_ATTRIBUTES.merge(options)
-        Tag.build('input', merged_options)
+      def self.build(attributes)
+        merged_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
+        Tag.build('input', merged_attributes)
       end
     end
   end
