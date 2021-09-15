@@ -4,21 +4,21 @@ module HexletCode
   module Tags
     class Tag
       class << self
-        def build(tag_name, raw_options = {})
+        def build(tag_name, raw_attributes = {})
           tag_body = yield if block_given?
-          options = build_options(raw_options)
+          attributes = build_attributes(raw_attributes)
 
           if tag_body.nil?
-            %(<#{tag_name}#{options}>)
+            %(<#{tag_name}#{attributes}>)
           else
-            %(<#{tag_name}#{options}>#{tag_body}</#{tag_name}>)
+            %(<#{tag_name}#{attributes}>#{tag_body}</#{tag_name}>)
           end
         end
 
         private
 
-        def build_options(options)
-          options.reduce('') do |res, (key, value)|
+        def build_attributes(attributes)
+          attributes.reduce('') do |res, (key, value)|
             if value
               %(#{res} #{key}="#{value}")
             elsif key != :value
