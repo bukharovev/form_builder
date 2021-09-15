@@ -10,10 +10,10 @@ module HexletCode
       @inputs = []
     end
 
-    def input(name, as: :input, **options)
+    def input(name, **options)
       value = @entity[name]
       @inputs << {
-        type: as,
+        type: options[:as] || :input,
         attributes: { name: name, value: value, **options }
       }
     end
