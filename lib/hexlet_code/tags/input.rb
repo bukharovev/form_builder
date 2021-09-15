@@ -3,11 +3,12 @@
 module HexletCode
   module Tags
     autoload :Tag, 'hexlet_code/tags/tag'
+    autoload :Label, 'hexlet_code/tags/label'
 
     class Input
       def self.build(attributes)
         result = []
-        result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
+        result << Label.build(attributes)
         result << Tag.build('input', type: 'text', **attributes)
         result.join("\n  ")
       end

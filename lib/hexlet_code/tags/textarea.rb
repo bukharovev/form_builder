@@ -3,6 +3,7 @@
 module HexletCode
   module Tags
     autoload :Tag, 'hexlet_code/tags/tag'
+    autoload :Label, 'hexlet_code/tags/label'
 
     class Textarea
       DEFAULT_ATTRIBUTES = {
@@ -13,7 +14,7 @@ module HexletCode
       def self.build(value: '', **attributes)
         updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
         result = []
-        result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
+        result << Label.build(attributes)
         result << Tag.build('textarea', updated_attributes) { value }
         result.join("\n  ")
       end
