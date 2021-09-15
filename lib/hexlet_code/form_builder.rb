@@ -18,7 +18,7 @@ module HexletCode
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
           tag = Tags.get_by_type(type)
-          tag.build(**attributes)
+          tag.build(**attributes.except(:as))
         end
 
         form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}" }}\n"
