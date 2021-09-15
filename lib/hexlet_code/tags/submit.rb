@@ -2,8 +2,6 @@
 
 module HexletCode
   module Tags
-    autoload :Tag, 'hexlet_code/tags/tag'
-
     class Submit
       DEFAULT_ATTRIBUTES = {
         type: 'submit',

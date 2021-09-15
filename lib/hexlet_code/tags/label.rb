@@ -2,8 +2,6 @@
 
 module HexletCode
   module Tags
-    autoload :Tag, 'hexlet_code/tags/tag'
-
     class Label
       def self.build(attributes)
         Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }

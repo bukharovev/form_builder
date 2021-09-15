@@ -2,8 +2,6 @@
 
 module HexletCode
   module Tags
-    autoload :Tag, 'hexlet_code/tags/tag'
-
     class Select
       class << self
         def build(attributes)

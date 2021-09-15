@@ -2,7 +2,6 @@
 
 module HexletCode
   module Tags
-    autoload :Tag, 'hexlet_code/tags/tag'
     autoload :Label, 'hexlet_code/tags/label'
 
     class Textarea

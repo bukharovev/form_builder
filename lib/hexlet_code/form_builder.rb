@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  autoload :Tag, 'hexlet_code/tags/tag'
+  autoload :Tag, 'hexlet_code/tag'
   autoload :Tags, 'hexlet_code/tags/tags'
 
   class FormBuilder
@@ -21,7 +21,7 @@ module HexletCode
         end
 
         form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}" }}\n"
-        Tags::Tag.build('form', updated_form_attributes) { form_body_str }
+        Tag.build('form', updated_form_attributes) { form_body_str }
       end
     end
   end
