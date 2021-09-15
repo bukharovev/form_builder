@@ -10,8 +10,7 @@ module HexletCode
       }.freeze
 
       def self.build(attributes)
-        merged_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
-        Tag.build('input', merged_attributes)
+        Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes))
       end
     end
   end

@@ -3,14 +3,14 @@
 module HexletCode
   class Tag
     class << self
-      def build(tag_name, raw_attributes = {})
+      def build(tag_name, attributes: {})
         tag_body = yield if block_given?
-        attributes = build_attributes(raw_attributes)
+        builded_attributes = build_attributes(attributes)
 
         if tag_body.nil?
-          %(<#{tag_name}#{attributes}>)
+          %(<#{tag_name}#{builded_attributes}>)
         else
-          %(<#{tag_name}#{attributes}>#{tag_body}</#{tag_name}>)
+          %(<#{tag_name}#{builded_attributes}>#{tag_body}</#{tag_name}>)
         end
       end
 

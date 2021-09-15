@@ -4,7 +4,7 @@ module HexletCode
   module Tags
     class Label
       def self.build(attributes)
-        Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
+        Tag.build('label', attributes: { for: attributes[:name] }) { attributes[:name].capitalize }
       end
     end
   end

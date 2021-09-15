@@ -9,10 +9,9 @@ module HexletCode
       }.freeze
 
       def self.build(value: '', **attributes)
-        updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
         result = []
         result << Label.build(attributes)
-        result << Tag.build('textarea', updated_attributes) { value }
+        result << Tag.build('textarea', attributes: DEFAULT_ATTRIBUTES.merge(attributes)) { value }
         result.join("\n  ")
       end
     end

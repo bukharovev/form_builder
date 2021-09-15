@@ -8,10 +8,9 @@ module HexletCode
       }.freeze
 
       def self.build(attributes)
-        updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
         result = []
         result << Label.build(attributes)
-        result << Tag.build('input', **updated_attributes)
+        result << Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes))
         result.join("\n  ")
       end
     end

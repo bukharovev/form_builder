@@ -13,15 +13,15 @@ module HexletCode
 
       def build(form)
         form.attributes[:action] = form.attributes.delete :url
-        updated_form_attributes = DEFAULT_FORM_ATTRIBUTES.merge(form.attributes)
 
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
-          Tags.get_by_type(type).build(**attributes.except(:as))
+          tag = Tags.get_by_type(type)
+          tag.build(**attributes.except(:as))
         end
 
         form_body_str = "#{builded_tags.reduce('') { |acc, tag| "#{acc}\n  #{tag}" }}\n"
-        Tag.build('form', updated_form_attributes) { form_body_str }
+        Tag.build('form', attributes: DEFAULT_FORM_ATTRIBUTES.merge(form.attributes)) { form_body_str }
       end
     end
   end
