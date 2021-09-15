@@ -19,8 +19,13 @@ module HexletCode
 
         def build_options(options)
           options.reduce('') do |res, (key, value)|
-            res = %(#{res} #{key}="#{value}") if value
-            res
+            if value
+              %(#{res} #{key}="#{value}")
+            elsif key != :value
+              %(#{res} #{key})
+            else
+              res
+            end
           end
         end
       end

@@ -5,12 +5,14 @@ module HexletCode
     autoload :Input, 'hexlet_code/tags/input'
     autoload :Submit, 'hexlet_code/tags/submit'
     autoload :Textarea, 'hexlet_code/tags/textarea'
+    autoload :Select, 'hexlet_code/tags/select'
 
     class << self
       TAG_TYPES = {
         input: Input,
         submit: Submit,
-        text: Textarea
+        text: Textarea,
+        select: Select
       }.freeze
 
       def get_by_type(type)
