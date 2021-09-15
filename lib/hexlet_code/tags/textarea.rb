@@ -9,14 +9,13 @@ module HexletCode
         cols: '20',
         rows: '40'
       }.freeze
-      class << self
-        def build(value: '', **attributes)
-          updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
-          result = []
-          result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
-          result << Tag.build('textarea', updated_attributes) { value }
-          result.join("\n  ")
-        end
+
+      def self.build(value: '', **attributes)
+        updated_attributes = DEFAULT_ATTRIBUTES.merge(attributes)
+        result = []
+        result << Tag.build('label', for: attributes[:name]) { attributes[:name].capitalize }
+        result << Tag.build('textarea', updated_attributes) { value }
+        result.join("\n  ")
       end
     end
   end
