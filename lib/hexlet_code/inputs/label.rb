@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module Tags
+  module Inputs
     class Label
       def self.build(options: {}, **attributes)
         Tag.build('label', attributes: { for: attributes[:name] }, options: options) { attributes[:name].capitalize }

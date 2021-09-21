@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module Tags
-    autoload :Input, 'hexlet_code/tags/input'
-    autoload :Submit, 'hexlet_code/tags/submit'
-    autoload :Textarea, 'hexlet_code/tags/textarea'
-    autoload :Select, 'hexlet_code/tags/select'
-    autoload :Label, 'hexlet_code/tags/label'
+  module Inputs
+    autoload :Input, 'hexlet_code/inputs/input'
+    autoload :Submit, 'hexlet_code/inputs/submit'
+    autoload :Textarea, 'hexlet_code/inputs/textarea'
+    autoload :Select, 'hexlet_code/inputs/select'
+    autoload :Label, 'hexlet_code/inputs/label'
 
     class << self
       TAG_TYPES = {

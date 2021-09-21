@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module Tags
+  module Inputs
     class Submit
       DEFAULT_ATTRIBUTES = {
         type: 'submit',

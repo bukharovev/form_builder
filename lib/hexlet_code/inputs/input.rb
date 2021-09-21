@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module Tags
+  module Inputs
     class Input
       DEFAULT_ATTRIBUTES = {
         type: 'text'

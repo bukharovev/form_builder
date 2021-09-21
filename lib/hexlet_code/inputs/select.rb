@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  module Tags
+  module Inputs
     class Select
       class << self
         def build(options: {}, **attributes)

@@ -2,7 +2,7 @@
 
 module HexletCode
   autoload :Tag, 'hexlet_code/tag'
-  autoload :Tags, 'hexlet_code/tags/tags'
+  autoload :Inputs, 'hexlet_code/inputs/tags'
 
   class FormBuilder
     class << self
@@ -16,7 +16,7 @@ module HexletCode
 
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
-          tag = Tags.get_by_type(type)
+          tag = Inputs.get_by_type(type)
           tag.build(**attributes.except(:as), options: { depth: 1 })
         end
 
