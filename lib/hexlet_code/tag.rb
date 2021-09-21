@@ -27,7 +27,7 @@ module HexletCode
 
       def build_attributes(attributes)
         attributes
-          .map { |(key, value)| value.nil? ? %(#{key}) : %(#{key}="#{value}") }
+          .map { |(key, value)| value.nil? ? key.to_s : %(#{key}="#{value}") }
           .join(' ')
       end
 
