@@ -6,3 +6,5 @@ Style/Documentation:
 Naming/MethodParameterName:
   AllowedNames:
     - as
+Metrics/MethodLength:
+  Max: 15
