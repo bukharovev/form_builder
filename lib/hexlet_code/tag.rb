@@ -3,17 +3,22 @@
 module HexletCode
   class Tag
     class << self
+      SINGLE_TAGS = %i[area br img input link].freeze
+
       def build(name, attributes: {}, options: {})
         body = yield if block_given?
         builded_attributes = build_attributes(attributes)
         indent = indent(options.fetch(:depth, 0))
 
-        if options.fetch(:with_nested_body, false)
-          build_nested_tag(indent, name, builded_attributes, body)
-        elsif body.nil?
-          build_single_tag(indent, name, builded_attributes)
+        open_tag = "<#{name} #{builded_attributes}>"
+        closed_tag = "</#{name}>"
+
+        if SINGLE_TAGS.include?(name)
+          "#{indent}#{open_tag}"
+        elsif options.fetch(:with_nested_body, false)
+          "#{indent}#{open_tag}\n#{body}\n#{indent}#{closed_tag}"
         else
-          build_paired_tag(indent, name, builded_attributes, body)
+          "#{indent}#{open_tag}#{body}#{closed_tag}"
         end
       end
 
@@ -29,22 +34,6 @@ module HexletCode
         attributes
           .map { |(key, value)| value.nil? ? key.to_s : %(#{key}="#{value}") }
           .join(' ')
-      end
-
-      def build_nested_tag(indent, name, attributes, body)
-        open_tag = "#{indent}<#{name} #{attributes}>"
-        closed_tag = "#{indent}</#{name}>"
-        "#{open_tag}\n#{body}\n#{closed_tag}"
-      end
-
-      def build_single_tag(indent, name, attributes)
-        "#{indent}<#{name} #{attributes}>"
-      end
-
-      def build_paired_tag(indent, name, attributes, body)
-        open_tag = "#{indent}<#{name} #{attributes}>"
-        closed_tag = "</#{name}>"
-        "#{open_tag}#{body}#{closed_tag}"
       end
     end
   end
