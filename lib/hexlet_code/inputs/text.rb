@@ -2,7 +2,7 @@
 
 module HexletCode
   module Inputs
-    class Textarea
+    class Text
       DEFAULT_ATTRIBUTES = {
         cols: '20',
         rows: '40'
