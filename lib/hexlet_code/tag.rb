@@ -26,29 +26,23 @@ module HexletCode
       end
 
       def build_attributes(attributes)
-        attributes.reduce('') do |res, (key, value)|
-          if value
-            %(#{res} #{key}="#{value}")
-          elsif key != :value
-            %(#{res} #{key})
-          else
-            res
-          end
-        end
+        attributes
+          .map { |(key, value)| value.nil? ? %(#{key}) : %(#{key}="#{value}") }
+          .join(' ')
       end
 
       def build_nested_tag(indent, name, attributes, body)
-        open_tag = "#{indent}<#{name}#{attributes}>"
+        open_tag = "#{indent}<#{name} #{attributes}>"
         closed_tag = "#{indent}</#{name}>"
         "#{open_tag}\n#{body}\n#{closed_tag}"
       end
 
       def build_single_tag(indent, name, attributes)
-        "#{indent}<#{name}#{attributes}>"
+        "#{indent}<#{name} #{attributes}>"
       end
 
       def build_paired_tag(indent, name, attributes, body)
-        open_tag = "#{indent}<#{name}#{attributes}>"
+        open_tag = "#{indent}<#{name} #{attributes}>"
         closed_tag = "</#{name}>"
         "#{open_tag}#{body}#{closed_tag}"
       end

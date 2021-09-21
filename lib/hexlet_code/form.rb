@@ -12,9 +12,10 @@ module HexletCode
 
     def input(name, **options)
       value = @entity[name]
+      options = options.merge({ value: value }) unless value.nil?
       @inputs << {
         type: options[:as] || :input,
-        attributes: { name: name, value: value, **options }
+        attributes: { name: name, **options }
       }
     end
 
