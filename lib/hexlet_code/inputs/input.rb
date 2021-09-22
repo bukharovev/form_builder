@@ -2,16 +2,13 @@
 
 module HexletCode
   module Inputs
-    class Input
+    class Input < Base
       DEFAULT_ATTRIBUTES = {
         type: 'text'
       }.freeze
 
       def self.build(options: {}, **attributes)
-        result = []
-        result << Label.build(options: options, **attributes)
-        result << Tag.build('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes), options: options)
-        result.join("\n")
+        input('input', attributes: DEFAULT_ATTRIBUTES.merge(attributes), options: options)
       end
     end
   end

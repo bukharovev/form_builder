@@ -2,7 +2,7 @@
 
 module HexletCode
   module Inputs
-    class Select
+    class Select < Base
       class << self
         def build(options: {}, **attributes)
           depth = options.fetch(:depth, 0)
@@ -10,8 +10,8 @@ module HexletCode
           select_body = build_select_options(attributes[:collection], options: updated_options)
 
           select_body_str = select_body.join("\n")
-          Tag.build('select', attributes: attributes.except(:collection),
-                              options: options.merge({ with_nested_body: true })) do
+          input('select', attributes: attributes.except(:collection),
+                          options: options.merge({ with_nested_body: true })) do
             select_body_str
           end
         end
