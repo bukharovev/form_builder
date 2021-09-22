@@ -5,15 +5,15 @@ module HexletCode
     class << self
       SINGLE_TAGS = %i[area br img input link].freeze
 
-      def build(name, attributes: {}, options: {})
+      def build(tag_name, attributes: {}, options: {})
         body = yield if block_given?
         builded_attributes = build_attributes(attributes)
         indent = indent(options.fetch(:depth, 0))
 
-        open_tag = "<#{name} #{builded_attributes}>"
-        closed_tag = "</#{name}>"
+        open_tag = "<#{tag_name} #{builded_attributes}>"
+        closed_tag = "</#{tag_name}>"
 
-        if SINGLE_TAGS.include?(name)
+        if SINGLE_TAGS.include?(tag_name)
           "#{indent}#{open_tag}"
         elsif options.fetch(:with_nested_body, false)
           "#{indent}#{open_tag}\n#{body}\n#{indent}#{closed_tag}"
