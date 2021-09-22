@@ -10,12 +10,12 @@ class HexletCodeTest < Minitest::Test
     refute_nil ::HexletCode::VERSION
   end
 
-  User = Struct.new(:name, :second_name, :job, :gender, keyword_init: true)
+  User = Struct.new(:first_name, :second_name, :job, :gender, keyword_init: true)
 
   def test_form_for
-    user = User.new name: 'rob', job: 'google'
+    user = User.new first_name: 'rob', job: 'google'
     result = HexletCode.form_for user, url: '/users' do |f|
-      f.input :name, class: 'some-class'
+      f.input :first_name, class: 'some-class'
       f.input :second_name
       f.input :job, as: :text, cols: 30, rows: 5
       f.input :gender, as: :select, collection: %w[male female]
