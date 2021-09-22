@@ -13,7 +13,7 @@ class HexletCodeTest < Minitest::Test
   User = Struct.new(:first_name, :second_name, :job, :gender, keyword_init: true)
 
   def test_form_for
-    user = User.new first_name: 'rob', job: 'google'
+    user = User.new first_name: 'maria', job: 'google', gender: 'female'
     result = HexletCode.form_for user, url: '/users' do |f|
       f.input :first_name, class: 'some-class'
       f.input :second_name
@@ -22,6 +22,6 @@ class HexletCodeTest < Minitest::Test
       f.submit 'Send'
     end
 
-    assert_dom_equal load_fixture('form.html'), result
+    assert_equal load_fixture('form.html'), result
   end
 end
