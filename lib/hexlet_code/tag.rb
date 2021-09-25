@@ -13,13 +13,10 @@ module HexletCode
         open_tag = "<#{tag_name} #{builded_attributes}>"
         closed_tag = "</#{tag_name}>"
 
-        if SINGLE_TAGS.include?(tag_name.to_sym)
-          "#{indent}#{open_tag}"
-        elsif options.fetch(:with_nested_body, false)
-          "#{indent}#{open_tag}\n#{body}\n#{indent}#{closed_tag}"
-        else
-          "#{indent}#{open_tag}#{body}#{closed_tag}"
-        end
+        return "#{indent}#{open_tag}" if SINGLE_TAGS.include?(tag_name.to_sym)
+        return "#{indent}#{open_tag}\n#{body}\n#{indent}#{closed_tag}" if options.fetch(:with_nested_body, false)
+
+        "#{indent}#{open_tag}#{body}#{closed_tag}"
       end
 
       private

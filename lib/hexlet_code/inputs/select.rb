@@ -21,13 +21,10 @@ module HexletCode
         private
 
         def build_select_body(collection, options: {}, selected_value: nil)
-          selected_value ||= collection.first
           collection.each_with_index.map do |value, _index|
-            if selected_value == value
-              Tag.build('option', attributes: { value: value, selected: nil }, options: options) { value }
-            else
-              Tag.build('option', attributes: { value: value }, options: options) { value }
-            end
+            attrs = { value: value }
+            attrs.merge!(selected: nil) if selected_value == value
+            Tag.build('option', attributes: attrs, options: options) { value }
           end
         end
       end
