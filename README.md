@@ -1,3 +1,5 @@
+[![build](https://github.com/bukharovev/form_builder/actions/workflows/main.yml/badge.svg)](https://github.com/bukharovev/form_builder/actions/workflows/main.yml)
+
 ## Installation
 
 Add this line to your application's Gemfile:
