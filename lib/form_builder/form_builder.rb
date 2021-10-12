@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module HexletCode
-  autoload :Tag, 'hexlet_code/tag'
-  autoload :Inputs, 'hexlet_code/inputs/inputs'
+module FormBuilder
+  autoload :Tag, 'form_builder/tag'
+  autoload :Inputs, 'form_builder/inputs/inputs'
 
   class FormBuilder
     class << self
@@ -16,7 +16,7 @@ module HexletCode
 
         builded_tags = form.inputs.map do |input|
           type, attributes = input.values_at(:type, :attributes)
-          tag = Object.const_get "HexletCode::Inputs::#{type.capitalize}"
+          tag = Object.const_get "FormBuilder::Inputs::#{type.capitalize}"
           tag.build(**attributes.except(:as), options: { depth: 1 })
         end
 

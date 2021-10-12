@@ -3,7 +3,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hexlet_code'
+gem 'form_builder'
 ```
 
 And then execute:
@@ -12,7 +12,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install hexlet_code
+    $ gem install form_builder
 
 ## Usage
 

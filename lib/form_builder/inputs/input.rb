@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module HexletCode
+module FormBuilder
   module Inputs
     class Input < Base
       DEFAULT_ATTRIBUTES = {

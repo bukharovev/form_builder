@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module HexletCode
+module FormBuilder
   class Tag
     class << self
       SINGLE_TAGS = %i[area br img input link].freeze

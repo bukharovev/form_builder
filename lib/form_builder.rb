@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module HexletCode
-  autoload :VERSION, 'hexlet_code/version'
-  autoload :Form, 'hexlet_code/form'
-  autoload :FormBuilder, 'hexlet_code/form_builder'
+module FormBuilder
+  autoload :VERSION, 'form_builder/version'
+  autoload :Form, 'form_builder/form'
+  autoload :FormBuilder, 'form_builder/form_builder'
 
   def self.form_for(model, form_attributes, &block)
     return unless block
