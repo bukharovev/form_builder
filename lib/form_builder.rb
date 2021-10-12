@@ -3,7 +3,7 @@
 module FormBuilder
   autoload :VERSION, 'form_builder/version'
   autoload :Form, 'form_builder/form'
-  autoload :FormBuilder, 'form_builder/form_builder'
+  autoload :Renderer, 'form_builder/renderer'
 
   def self.form_for(model, form_attributes, &block)
     return unless block
@@ -11,6 +11,6 @@ module FormBuilder
     form = Form.new(model, form_attributes)
     yield form
 
-    FormBuilder.build form
+    Renderer.render form
   end
 end

@@ -4,14 +4,14 @@ module FormBuilder
   autoload :Tag, 'form_builder/tag'
   autoload :Inputs, 'form_builder/inputs/inputs'
 
-  class FormBuilder
+  class Renderer
     class << self
       DEFAULT_FORM_ATTRIBUTES = {
         action: '#',
         method: 'post'
       }.freeze
 
-      def build(form)
+      def render(form)
         form.attributes[:action] = form.attributes.delete :url # replace :url key to :action
 
         builded_tags = form.inputs.map do |input|
